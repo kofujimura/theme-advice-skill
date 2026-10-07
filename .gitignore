@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.DS_Store
+.venv/
+theme-workspace/
+tmp/
+node_modules/
+.vercel/
+.env*
+!.env.example
+.theme-site-data/
+.vercel

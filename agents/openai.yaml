@@ -1,0 +1,4 @@
+interface:
+  display_name: "卒研テーマ相談"
+  short_description: "藤村ゼミの学生の興味から、新しい問いと評価方法を対話で育てる"
+  default_prompt: "$theme-advice-skill を使って、私の興味から卒研テーマを考え、ニックネームを設定し、問いと評価方法を整理してください。"

@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "skill_version": "0.2.0",
+  "created_at": null,
+  "updated_at": null,
+  "stage": "explore",
+  "environment": {
+    "model": null,
+    "codex_version": null,
+    "search": "unknown"
+  },
+  "student": {
+    "participant_id": null,
+    "nickname": null,
+    "interests": [],
+    "experiences": [],
+    "constraints": [],
+    "own_words": []
+  },
+  "candidates": [],
+  "selected_candidate_id": null,
+  "sources": [],
+  "searches": [],
+  "decisions": [],
+  "next_actions": []
+}

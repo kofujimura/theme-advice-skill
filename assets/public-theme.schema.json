@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:theme-advice:public-theme:1.0",
+  "title": "共有する研究テーマ",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "created_at", "author", "theme", "sources"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "id": { "type": "string", "format": "uuid" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "author": {
+      "type": "object", "additionalProperties": false, "required": ["nickname"],
+      "properties": { "nickname": { "type": "string", "minLength": 1, "maxLength": 40, "pattern": "\\S" } }
+    },
+    "theme": {
+      "type": "object", "additionalProperties": false,
+      "required": ["title", "rq", "interest_connection", "contribution_types", "novelty", "source_ids", "technology", "evaluation", "pilot", "open_questions"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1, "maxLength": 160, "pattern": "\\S" },
+        "rq": { "type": "string", "minLength": 1, "maxLength": 2000, "pattern": "\\S" },
+        "interest_connection": { "$ref": "#/$defs/text" },
+        "contribution_types": { "type": "array", "minItems": 1, "maxItems": 4, "uniqueItems": true, "items": { "enum": ["technical", "application", "problem", "artistic"] } },
+        "novelty": {
+          "type": "object", "additionalProperties": false, "required": ["status", "claim"],
+          "properties": { "status": { "enum": ["unverified", "search_scoped", "teacher_reviewed"] }, "claim": { "$ref": "#/$defs/text" } }
+        },
+        "source_ids": { "$ref": "#/$defs/ids" },
+        "technology": {
+          "type": "object", "additionalProperties": false, "required": ["capability", "availability", "conditions", "source_ids"],
+          "properties": {
+            "capability": { "$ref": "#/$defs/text" },
+            "availability": { "enum": ["unverified", "verified", "unavailable"] },
+            "conditions": { "$ref": "#/$defs/text" },
+            "source_ids": { "$ref": "#/$defs/ids" }
+          }
+        },
+        "evaluation": {
+          "type": "object", "additionalProperties": false, "required": ["comparison", "metrics", "procedure", "resources", "limitations"],
+          "properties": {
+            "comparison": { "$ref": "#/$defs/text" }, "metrics": { "$ref": "#/$defs/texts" },
+            "procedure": { "$ref": "#/$defs/text" }, "resources": { "$ref": "#/$defs/text" }, "limitations": { "$ref": "#/$defs/text" }
+          }
+        },
+        "pilot": { "$ref": "#/$defs/text" }, "open_questions": { "$ref": "#/$defs/texts" }
+      }
+    },
+    "sources": {
+      "type": "array", "maxItems": 30,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["id", "title", "url", "kind", "read_level", "checked_at", "takeaway"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1, "maxLength": 80 }, "title": { "type": "string", "maxLength": 500 },
+          "url": { "type": ["string", "null"], "maxLength": 2000, "pattern": "^https?://[^\\s]+$", "format": "uri" },
+          "kind": { "enum": ["paper", "official", "lab", "artwork", "other"] },
+          "read_level": { "enum": ["full_text", "abstract", "snippet", "unread"] },
+          "checked_at": { "type": ["string", "null"], "format": "date-time" },
+          "takeaway": { "$ref": "#/$defs/text" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "text": { "type": "string", "maxLength": 5000 },
+    "texts": { "type": "array", "maxItems": 20, "items": { "type": "string", "minLength": 1, "maxLength": 1000 } },
+    "ids": { "type": "array", "maxItems": 30, "uniqueItems": true, "items": { "type": "string", "minLength": 1, "maxLength": 80 } }
+  }
+}

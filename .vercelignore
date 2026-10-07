@@ -1,0 +1,12 @@
+node_modules
+.git
+.agents
+.codex
+.env*
+.theme-site-data
+theme-workspace
+tmp
+__pycache__
+*.pyc
+tests
+docs

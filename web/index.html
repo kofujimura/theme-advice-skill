@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="藤村ゼミの卒研テーマを持ち寄る広場。リサーチクエスチョン、新しさの仮説、評価方法を読み比べよう。">
+  <meta name="robots" content="noindex, nofollow">
+  <title>テーマ広場 | 藤村ゼミ</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" type="module"></script>
+</head>
+<body>
+  <a class="skip" href="#main">テーマ一覧へ</a>
+  <div class="shell">
+    <aside class="sidebar" aria-label="テーマの分類">
+      <a class="brand" href="/" aria-label="テーマ広場のトップ">
+        <span class="brand-mark" aria-hidden="true">?</span>
+        <span><strong>テーマ広場</strong><small>FUJIMURA SEMINAR</small></span>
+      </a>
+      <p class="nav-label">新しさの切り口</p>
+      <nav id="filters" class="filters" aria-label="新しさで絞り込む">
+        <button type="button" data-filter="all" aria-pressed="true"><span>すべてのテーマ</span><span class="filter-count" data-count="all">—</span></button>
+        <button type="button" data-filter="technical" aria-pressed="false"><span>技術の新しさ</span><span class="filter-count" data-count="technical">—</span></button>
+        <button type="button" data-filter="application" aria-pressed="false"><span>応用の新しさ</span><span class="filter-count" data-count="application">—</span></button>
+        <button type="button" data-filter="problem" aria-pressed="false"><span>問題の新しさ</span><span class="filter-count" data-count="problem">—</span></button>
+        <button type="button" data-filter="artistic" aria-pressed="false"><span>表現・体験の新しさ</span><span class="filter-count" data-count="artistic">—</span></button>
+      </nav>
+      <div class="sidebar-note"><span class="note-label">問いを育てる場所</span><p>「何を作るか」の先に、<br>「何を確かめたいか」を。</p><p class="subtle">新しさは仮説から始まります。未確認の部分も、次の一歩のヒントです。</p></div>
+      <button class="help-button" id="open-help" type="button">共有のしかた</button>
+    </aside>
+    <main id="main">
+      <header class="topbar"><span>卒業研究 / テーマを考える</span><span class="seminar-label">藤村ゼミ</span></header>
+      <section class="intro" aria-labelledby="page-title"><div><p class="eyebrow">みんなの問い、次の発想へ。</p><h1 id="page-title">テーマ広場<span class="title-dot">.</span></h1><p class="lead">興味から生まれた問いを、持ち寄ろう。<br class="desktop-break">誰かの視点が、自分のテーマを育てるきっかけになる。</p></div><div class="total"><strong id="total-count">—</strong><span>共有されたテーマ</span></div></section>
+      <section class="collection" aria-label="共有された研究テーマ">
+        <div class="collection-tools"><h2 id="list-title">すべてのテーマ</h2><label class="search"><span aria-hidden="true">⌕</span><span class="sr-only">タイトル・問い・ニックネームで検索</span><input id="search" type="search" placeholder="テーマ、問い、ニックネームで検索" autocomplete="off"></label></div>
+        <div class="list-meta"><p id="result-count" role="status" aria-live="polite">テーマを読み込んでいます…</p><span>読み込み済みを新しい順に</span></div>
+        <div id="notice" class="notice" role="status" hidden></div>
+        <div id="theme-list" class="theme-grid" aria-busy="true"></div>
+        <div class="list-actions"><button id="load-more" class="secondary" hidden type="button">もっと読み込む</button></div>
+      </section>
+      <footer><span>テーマは検討中の提案です。新規性の表示は、調査の段階を表します。</span><span>theme-advice-skill</span></footer>
+    </main>
+  </div>
+  <dialog id="detail" class="detail-dialog" aria-labelledby="detail-title"><div class="dialog-top"><span class="eyebrow">RESEARCH THEME</span><button class="close-button" type="button" data-close="detail" aria-label="テーマの詳細を閉じる">×</button></div><div id="detail-body"></div></dialog>
+  <dialog id="help" class="help-dialog" aria-labelledby="help-title"><div class="dialog-top"><span class="eyebrow">問いを持ち寄る</span><button class="close-button" type="button" data-close="help" aria-label="共有のしかたを閉じる">×</button></div><h2 id="help-title">テーマを共有するには</h2><ol class="steps"><li><strong>Codexでテーマを考える</strong><p>Cloud Shellで <code>npx codex</code> を起動し、<code>$theme-advice-skill</code> を使って相談します。</p></li><li><strong>ニックネームとテーマを確認する</strong><p>AIが共有用のJSONを保存します。問いや評価方法に、今の考えが反映されているか確認しましょう。</p></li><li><strong>「テーマを送る」と伝える</strong><p>設定済みのこのサイトに、テーマとニックネームを投稿します。送信先とゼミの送信キーは先生の案内に従って設定してください。</p></li></ol><div class="share-command"><code>このテーマを保存して、テーマを送る。</code><button id="copy-command" class="secondary" type="button">コピー</button></div><p class="help-note">投稿内容は、このURLから閲覧できます。対話の記録や送信キーは投稿されません。</p><p id="copy-status" role="status" class="subtle"></p></dialog>
+</body>
+</html>
